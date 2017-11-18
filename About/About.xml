@@ -3,7 +3,7 @@
 	<name>No Forced Slowdown</name>
 	<author>Dingo</author>
 	<url>https://ludeon.com/forums/index.php?topic=26077</url>
-	<targetVersion>0.17.0</targetVersion>
+	<targetVersion>0.18.0</targetVersion>
 	<description>Removes the forced x1 speed modifier which triggers on some events.
 
 Powered by the Harmony Patch Library.</description>

@@ -8,9 +8,7 @@ namespace No_Forced_Slowdown
 	{
 		public Controller(ModContentPack content) : base(content)
 		{
-			HarmonyInstance harmony = HarmonyInstance.Create("dingo.rimworld.no_forced_slowdown");
-
-			harmony.PatchAll(Assembly.GetExecutingAssembly());
+			HarmonyInstance.Create("dingo.rimworld.no_forced_slowdown").PatchAll(Assembly.GetExecutingAssembly());
 		}
 	}
 }
