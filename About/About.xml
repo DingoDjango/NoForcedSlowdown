@@ -3,8 +3,10 @@
 	<name>No Forced Slowdown</name>
 	<author>Dingo</author>
 	<url>https://ludeon.com/forums/index.php?topic=26077</url>
-	<targetVersion>0.18.0</targetVersion>
-	<description>Removes the forced x1 speed modifier which triggers on some events.
+	<targetVersion>1.0.0</targetVersion>
+	<description>RimWorld automatically slows down gameplay speed to x1 when certain events fire. The game also prevents you from going back to a higher speed for a considerable amount of time.
+
+This mod aims to fix that by preventing this mechanic from triggering.
 
 Powered by the Harmony Patch Library.</description>
 </ModMetaData>

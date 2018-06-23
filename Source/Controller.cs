@@ -2,7 +2,7 @@
 using Harmony;
 using Verse;
 
-namespace No_Forced_Slowdown
+namespace NoForcedSlowdown
 {
 	public class Controller : Mod
 	{

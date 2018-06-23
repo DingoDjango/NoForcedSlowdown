@@ -1,7 +1,7 @@
 ﻿using Harmony;
 using Verse;
 
-namespace No_Forced_Slowdown
+namespace NoForcedSlowdown
 {
 	[HarmonyPatch(typeof(TimeSlower))]
 	[HarmonyPatch(nameof(TimeSlower.SignalForceNormalSpeed))]
