@@ -4,9 +4,11 @@
 	<author>Dingo</author>
 	<url>https://ludeon.com/forums/index.php?topic=26077</url>
 	<targetVersion>1.0.0</targetVersion>
-	<description>RimWorld automatically slows down gameplay speed to x1 when certain events fire. The game also prevents you from going back to a higher speed for a considerable amount of time.
+	<description>RimWorld automatically slows down gameplay and prevents time controls when certain events fire. With this mod you can take back control!
 
-This mod aims to fix that by preventing this mechanic from triggering.
+- Configurable mod options let you tweak the slowdown mechanic.
+
+- Will completely disable slowdown by default.
 
 Powered by the Harmony Patch Library.</description>
 </ModMetaData>
