@@ -16,7 +16,7 @@
 
 	<!-- Mod option - minimum time between slowdowns -->
 
-	<NFS.MinSecondsToNextSlowdown>&lt;b&gt;Real-time seconds between slowdowns:&lt;/b&gt;</NFS.MinSecondsToNextSlowdown>
-	<NFS.MinSecondsToNextSlowdown.Tooltip>Only valid if "Unlock time controls" is selected.\n\nThe minimum amount of time (in seconds) after one slowdown, before a new slowdown can be triggered.</NFS.MinSecondsToNextSlowdown.Tooltip>
+	<NFS.MinSecondsToNextSlowdown>&lt;b&gt;Minimum seconds between slowdowns:&lt;/b&gt;</NFS.MinSecondsToNextSlowdown>
+	<NFS.MinSecondsToNextSlowdown.Tooltip>Only valid if "Unlock time controls" is selected.\n\nThe minimum amount of time (in real-time seconds) after one slowdown, before a new slowdown can be triggered.</NFS.MinSecondsToNextSlowdown.Tooltip>
 
 </LanguageData>

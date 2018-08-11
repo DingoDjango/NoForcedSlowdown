@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using Harmony;
-using RimWorld;
+﻿using Harmony;
 using UnityEngine;
 using Verse;
 
@@ -22,13 +19,13 @@ namespace NoForcedSlowdown
 		}
 
 		// Allows slowdown to x1 but retains player-driven time controls
-		public static void Postfix(ref bool __result, ref int ___forceNormalSpeedUntil)
+		public static void Postfix(ref bool __result)
 		{
 			if (Settings.CurrentModFunction == Settings.SlowdownDegree.DisableGamespeedLock && __result)
 			{
 				__result = false;
 
-				if (Settings.LastRealTimeSlowdown + Settings.MinSecondsToNextSlowdown < Time.realtimeSinceStartup)
+				if (Find.TickManager.CurTimeSpeed != TimeSpeed.Paused && Settings.LastRealTimeSlowdown + Settings.MinSecondsToNextSlowdown < Time.realtimeSinceStartup)
 				{
 					Find.TickManager.CurTimeSpeed = TimeSpeed.Normal;
 					Settings.LastRealTimeSlowdown = Time.realtimeSinceStartup;

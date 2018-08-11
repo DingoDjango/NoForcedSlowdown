@@ -72,9 +72,12 @@ namespace NoForcedSlowdown
 			Scribe_Values.Look(ref CurrentModFunction, "NFS_CurrentModFunction", SlowdownDegree.DisableGamespeedSlowdown);
 			Scribe_Values.Look(ref MinSecondsToNextSlowdown, "NFS_MinSecondsToNextSlowdown", 60);
 
-			// Set unsaved values
-			LastRealTimeSlowdown = -1 * MinSecondsToNextSlowdown;
-			minSecondsTextBuffer = MinSecondsToNextSlowdown.ToString();
+			if (Scribe.mode == LoadSaveMode.LoadingVars)
+			{
+				// Set unsaved values
+				LastRealTimeSlowdown = -1 * MinSecondsToNextSlowdown;
+				minSecondsTextBuffer = MinSecondsToNextSlowdown.ToString();
+			}
 		}
 	}
 }
