@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<!-- Mod option - determine mod functionality -->
+
+	<NFS.ModFunctions>&lt;b&gt;Funcionamiento actual del mod:&lt;/b&gt;</NFS.ModFunctions>
+
+	<NFS.RegularGameplay>No hacer nada</NFS.RegularGameplay>
+	<NFS.RegularGameplay.Tooltip>Cuando se activa la desaceleración:\n- Forzar la velocidad de juego a x1\n- Bloquear los controles temporales</NFS.RegularGameplay.Tooltip>
+
+	<NFS.DisableGamespeedLock>Desbloquear los controles temporales</NFS.DisableGamespeedLock>
+	<NFS.DisableGamespeedLock.Tooltip>Cuando se activa la desaceleración:\n- Forzar la velocidad de juego a x1\n- No bloquear los controles temporales.</NFS.DisableGamespeedLock.Tooltip>
+
+	<NFS.DisableGamespeedSlowdown>Desactivar el mecanismo de desaceleración</NFS.DisableGamespeedSlowdown>
+	<NFS.DisableGamespeedSlowdown.Tooltip>Cuando se activa la desaceleración:\n- No forzar la velocidad del juego\n- No bloquear los controles temporales.</NFS.DisableGamespeedSlowdown.Tooltip>
+
+	<!-- Mod option - minimum time between slowdowns -->
+
+	<NFS.MinSecondsToNextSlowdown>&lt;b&gt;Segundos mínimos entre ralentizaciones:&lt;/b&gt;</NFS.MinSecondsToNextSlowdown>
+	<NFS.MinSecondsToNextSlowdown.Tooltip>Sólo es válido si se selecciona "Desbloquear controles temporales".\n\nLa cantidad mínima de tiempo (en segundos de tiempo real) después de una desaceleración, antes de que se pueda desencadenar una nueva desaceleración.</NFS.MinSecondsToNextSlowdown.Tooltip>
+
+</LanguageData>
