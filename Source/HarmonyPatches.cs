@@ -20,8 +20,8 @@ namespace NoForcedSlowdown
 			HarmonyInstance.DEBUG = true;
 #endif
 
-			// Default:	RimWorld.TimeControls	-	draws a horizontal line over the time controls UI when ForcedNormalSpeed
-			// Default:	Verse.TickManager		-	forces speed to 0 (paused) or x1 when ForcedNormalSpeed
+			// Default: RimWorld.TimeControls - draws a horizontal line over the time controls UI when ForcedNormalSpeed.
+			// Default: Verse.TickManager     - forces speed to 0 (paused) or x1 when ForcedNormalSpeed.
 			HarmonyInstance harmony = HarmonyInstance.Create("dingo.rimworld.no_forced_slowdown");
 			MethodInfo doTimeControlsGUI = AccessTools.Method(typeof(TimeControls), nameof(TimeControls.DoTimeControlsGUI));
 			MethodInfo tickRateMultiplier = AccessTools.DeclaredProperty(typeof(TickManager), nameof(TickManager.TickRateMultiplier)).GetGetMethod();
@@ -43,44 +43,30 @@ namespace NoForcedSlowdown
 #endif
 		}
 
-		// Remove calls to a TimeSlower instance in a method, use HarmonyPatches.ShouldTriggerForcedNormalSpeed instead.
-		private static IEnumerable<CodeInstruction> ReplaceTimeSlowerCall(this IEnumerable<CodeInstruction> source, string methodIdentifier)
+		/* Example IL from RimWorld.TimeControls.DoTimeControlsGUI:
+		 * IL_00E5: call      class Verse.TickManager Verse.Find::get_TickManager()
+		 * IL_00EA: ldfld     class Verse.TimeSlower Verse.TickManager::slower
+		 * IL_00EF: callvirt  instance bool Verse.TimeSlower::get_ForcedNormalSpeed()
+		 * IL_00F4: brfalse   IL_0125 */
+		private static IEnumerable<CodeInstruction> ReplaceTimeSlowerCall(this IEnumerable<CodeInstruction> source)
 		{
-			int startMethodCall = -1, endMethodCall = -1;
-
-			List<CodeInstruction> codes = new List<CodeInstruction>(source);
+			FieldInfo tickManagerSlower = AccessTools.Field(typeof(TickManager), nameof(TickManager.slower));
+			bool replacedMethodCall = false; // Used to prevent ArgumentOutOfRange for codes[i + 1].
+			List<CodeInstruction> codes = source.ToList();
 
 			for (int i = 0; i < codes.Count; i++)
 			{
-				if (codes[i].opcode == OpCodes.Ldfld && codes[i].operand.ToString().Contains("TimeSlower"))
+				CodeInstruction instruction = codes[i];
+
+				if (!replacedMethodCall && codes[i + 1].operand == tickManagerSlower)
 				{
-					startMethodCall = i - 1;
-
-					for (int j = i + 1; j < codes.Count; j++)
-					{
-						if (codes[j].opcode == OpCodes.Brfalse)
-						{
-							endMethodCall = j;
-							break;
-						}
-					}
-
-					break;
+					instruction = new CodeInstruction(OpCodes.Call, Call_ShouldTriggerForcedNormalSpeed); // Replace the start of the method call chain.
+					replacedMethodCall = true;
+					i+=2; // The next iteration will reach brfalse.
 				}
+
+				yield return instruction;
 			}
-
-#if DEBUG
-			Log.Error($"{methodIdentifier} : StartIndex = {startMethodCall.ToString()} / EndIndex = {endMethodCall.ToString()}");
-#endif
-
-			if (startMethodCall > -1 && endMethodCall > -1)
-			{
-				codes[startMethodCall].opcode = OpCodes.Call;
-				codes[startMethodCall].operand = Call_ShouldTriggerForcedNormalSpeed;
-				codes.RemoveRange(startMethodCall + 1, endMethodCall - startMethodCall - 1);
-			}
-
-			return codes.AsEnumerable();
 		}
 
 		// Replacement method for Verse.TimeSlower.ForcedNormalSpeed
@@ -115,12 +101,12 @@ namespace NoForcedSlowdown
 
 		public static IEnumerable<CodeInstruction> Patch_TimeControls_DoTimeControlsGUI(IEnumerable<CodeInstruction> instructions)
 		{
-			return instructions.ReplaceTimeSlowerCall("Patch_TimeControls_DoTimeControlsGUI");
+			return instructions.ReplaceTimeSlowerCall();
 		}
 
 		public static IEnumerable<CodeInstruction> Patch_TickManager_TickRateMultiplier(IEnumerable<CodeInstruction> instructions)
 		{
-			return instructions.ReplaceTimeSlowerCall("Patch_TickManager_TickRateMultiplier");
+			return instructions.ReplaceTimeSlowerCall();
 		}
 	}
 }
