@@ -19,3 +19,4 @@ RimWorld automatically slows down gameplay and prevents time controls when certa
 - [ModSync RW](https://github.com/KiameV/rimworld-modsync-rw) - [KiameV](https://github.com/KiameV)
 - Code - [erdelf](https://github.com/erdelf)
 - Suggestions - [alexander_q](https://steamcommunity.com/profiles/76561198021282859)
+- Translations - [53N4](https://github.com/53N4)
