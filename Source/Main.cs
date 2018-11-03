@@ -14,7 +14,7 @@ namespace NoForcedSlowdown
 		{
 			base.DoSettingsWindowContents(inRect);
 
-			Settings.DoSettingsWindowContents(inRect.LeftHalf());
+			Settings.DoSettingsWindowContents(inRect.LeftPart(0.75f));
 		}
 
 		public override string SettingsCategory()
