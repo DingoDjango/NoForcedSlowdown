@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ModMetaData>
 	<name>No Forced Slowdown</name>
 	<author>Dingo</author>
-	<url>https://ludeon.com/forums/index.php?topic=26077</url>
-	<targetVersion>1.0.2059</targetVersion>
+	<packageId>Dingo.NoForcedSlowdown</packageId>
 	<description>RimWorld automatically slows down gameplay and prevents time controls when certain events fire. With this mod you can take back control!
 
 - Configurable mod options let you tweak the slowdown mechanic.
@@ -11,4 +10,16 @@
 - Will completely disable slowdown by default.
 
 Powered by the Harmony Patch Library.</description>
+	<url>https://ludeon.com/forums/index.php?topic=26077</url>
+	<supportedVersions>
+		<li>1.1</li>
+	</supportedVersions>
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
 </ModMetaData>

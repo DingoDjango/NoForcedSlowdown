@@ -1,14 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ModSyncNinjaData>
-  <ID>d174d950-b069-41e2-9828-4a0dd74c4739</ID>
-  <ModName>No Forced Slowdown</ModName>
-  <Version>1.0.2059.1</Version>
-  <SaveBreaking>False</SaveBreaking>
-  <Host name="Github">
-    <Owner>DingoDjango</Owner>
-    <Project>NoForcedSlowdown</Project>
-    <AboutDir>About</AboutDir>
-    <DownloadFrom>ModSyncReleases</DownloadFrom>
-    <Branch>master</Branch>
-  </Host>
+	<ID>d174d950-b069-41e2-9828-4a0dd74c4739</ID>
+	<ModName>No Forced Slowdown</ModName>
+	<Version>1.1.7363.1</Version>
+	<SaveBreaking>False</SaveBreaking>
+	<Host name="Github">
+		<Owner>DingoDjango</Owner>
+		<Project>NoForcedSlowdown</Project>
+		<AboutDir>About</AboutDir>
+		<DownloadFrom>ModSyncReleases</DownloadFrom>
+		<Branch>master</Branch>
+	</Host>
 </ModSyncNinjaData>

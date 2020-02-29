@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace NoForcedSlowdown
+namespace No_Forced_Slowdown
 {
 	[StaticConstructorOnStartup]
 	public static class HarmonyPatches
@@ -17,18 +17,18 @@ namespace NoForcedSlowdown
 		static HarmonyPatches()
 		{
 #if DEBUG
-			HarmonyInstance.DEBUG = true;
+			Harmony.DEBUG = true;
 #endif
 
 			// Default: RimWorld.TimeControls - draws a horizontal line over the time controls UI when ForcedNormalSpeed.
 			// Default: Verse.TickManager     - forces speed to 0 (paused) or x1 when ForcedNormalSpeed.
-			HarmonyInstance harmony = HarmonyInstance.Create("dingo.rimworld.no_forced_slowdown");
+			Harmony harmony = new Harmony("dingo.rimworld.no_forced_slowdown");
 			MethodInfo doTimeControlsGUI = AccessTools.Method(typeof(TimeControls), nameof(TimeControls.DoTimeControlsGUI));
 			MethodInfo tickRateMultiplier = AccessTools.DeclaredProperty(typeof(TickManager), nameof(TickManager.TickRateMultiplier)).GetGetMethod();
 
 #if DEBUG
 			// Check for null references
-			//	Log.Message($"No Forced Slowdown :: MethodInfo _ForcedNormalSpeed = {AccessTools.DeclaredProperty(typeof(TimeSlower), nameof(TimeSlower.ForcedNormalSpeed)).GetGetMethod()}");
+			// Log.Message($"No Forced Slowdown :: MethodInfo _ForcedNormalSpeed = {AccessTools.DeclaredProperty(typeof(TimeSlower), nameof(TimeSlower.ForcedNormalSpeed)).GetGetMethod()}");
 			Log.Message($"No Forced Slowdown :: MethodInfo _ModdedForcedNormalSpeed = {Call_ShouldTriggerForcedNormalSpeed.ToString()}");
 			Log.Message($"No Forced Slowdown :: MethodInfo doTimeControlsGUI = {doTimeControlsGUI.ToString()}");
 			Log.Message($"No Forced Slowdown :: MethodInfo tickRateMultiplier = {tickRateMultiplier.ToString()}");

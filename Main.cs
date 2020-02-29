@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace NoForcedSlowdown
+namespace No_Forced_Slowdown
 {
 	public class Main : Mod
 	{
