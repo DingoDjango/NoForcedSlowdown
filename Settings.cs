@@ -51,17 +51,20 @@ namespace No_Forced_Slowdown
 				}
 			}
 
-			modOptions.Gap(30f);
+			if (CurrentModFunction == SlowdownDegree.DisableGamespeedLock)
+			{
+				modOptions.Gap(60f);
 
-			// Determine real time seconds timer for Settings.MinSecondsToNextSlowdown
-			Rect TextFieldRect = modOptions.GetRect(Text.LineHeight);
-			Rect labelRect = TextFieldRect.LeftPart(0.75f);
-			Rect inputRect = TextFieldRect.RightPart(0.20f);
+				// Determine real time seconds timer for Settings.MinSecondsToNextSlowdown
+				Rect TextFieldRect = modOptions.GetRect(Text.LineHeight);
+				Rect labelRect = TextFieldRect.LeftPart(0.75f);
+				Rect inputRect = TextFieldRect.RightPart(0.20f);
 
-			Widgets.Label(labelRect, "NFS.MinSecondsToNextSlowdown".Translate());
-			Widgets.DrawHighlightIfMouseover(labelRect);
-			TooltipHandler.TipRegion(labelRect, "NFS.MinSecondsToNextSlowdown.Tooltip".Translate());
-			Widgets.TextFieldNumeric(inputRect, ref MinSecondsToNextSlowdown, ref minSecondsTextBuffer);
+				Widgets.Label(labelRect, "NFS.MinSecondsToNextSlowdown".Translate());
+				Widgets.DrawHighlightIfMouseover(labelRect);
+				TooltipHandler.TipRegion(labelRect, "NFS.MinSecondsToNextSlowdown.Tooltip".Translate());
+				Widgets.TextFieldNumeric(inputRect, ref MinSecondsToNextSlowdown, ref minSecondsTextBuffer);
+			}
 
 			modOptions.End();
 		}
