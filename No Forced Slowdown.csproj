@@ -117,10 +117,10 @@ xcopy "$(ProjectDir)1.1" "%25MODDIR%25\1.1" /i /e /r /y
 
 xcopy "$(ProjectDir)About" "%25MODDIR%25\About" /i /e /r /y
 
-
-xcopy "$(ProjectDir)Common" "%25MODDIR%25\Common" /i /e /r /y
-
 xcopy "$(ProjectDir)Current" "%25MODDIR%25\Current" /i /e /r /y
+
+xcopy "$(ProjectDir)Languages" "%25MODDIR%25\Languages" /i /e /r /y
+
 
 xcopy "$(ProjectDir)LoadFolders.xml" "%25MODDIR%25" /r /y
 
