@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<!-- Mod option - determine mod functionality -->
+
+	<NFS.ModFunctions>&lt;b&gt;Current mod functionality:&lt;/b&gt;</NFS.ModFunctions>
+
+	<NFS.RegularGameplay>Do nothing</NFS.RegularGameplay>
+	<NFS.RegularGameplay.Tooltip>When slowdown is triggered:\n- Force game speed to x1\n- Lock time controls</NFS.RegularGameplay.Tooltip>
+
+	<NFS.DisableGamespeedLock>Unlock time controls</NFS.DisableGamespeedLock>
+	<NFS.DisableGamespeedLock.Tooltip>When slowdown is triggered:\n- Force game speed to x1\n- Do not lock time controls</NFS.DisableGamespeedLock.Tooltip>
+
+	<NFS.DisableGamespeedSlowdown>Disable slowdown mechanic</NFS.DisableGamespeedSlowdown>
+	<NFS.DisableGamespeedSlowdown.Tooltip>When slowdown is triggered:\n- Do not force game speed\n- Do not lock time controls</NFS.DisableGamespeedSlowdown.Tooltip>
+
+	<!-- Mod option - minimum time between slowdowns -->
+
+	<NFS.MinSecondsToNextSlowdown>&lt;b&gt;Minimum seconds between slowdowns:&lt;/b&gt;</NFS.MinSecondsToNextSlowdown>
+	<NFS.MinSecondsToNextSlowdown.Tooltip>Only valid if "Unlock time controls" is selected.\n\nThe minimum amount of time (in real-time seconds) after one slowdown, before a new slowdown can be triggered.</NFS.MinSecondsToNextSlowdown.Tooltip>
+
+</LanguageData>
