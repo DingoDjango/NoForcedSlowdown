@@ -12,6 +12,54 @@ namespace No_Forced_Slowdown
 	[StaticConstructorOnStartup]
 	public static class HarmonyPatches
 	{
+#if TRUE // NEW CODE
+		static HarmonyPatches()
+		{
+			Harmony harmony = new Harmony("dingo.rimworld.no_forced_slowdown");
+
+			harmony.Patch(
+				AccessTools.Method(typeof(TimeSlower), nameof(TimeSlower.SignalForceNormalSpeed)), 
+				new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_SignalForceNormalSpeed_Prefix)));
+			harmony.Patch(
+				AccessTools.Method(typeof(TimeSlower), nameof(TimeSlower.SignalForceNormalSpeedShort)), 
+				new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_SignalForceNormalSpeed_Prefix)));
+		}
+
+		public static bool Patch_SignalForceNormalSpeed_Prefix(TimeSlower __instance)
+		{
+			switch (Settings.CurrentModFunction)
+			{
+				case Settings.SlowdownDegree.RegularGameplay:
+					break;
+				case Settings.SlowdownDegree.DisableGamespeedLock:
+					{
+						// if enough time has passed since last slowdown (depending on settings), slow down gamespeed, but do not lock it
+						if (Find.TickManager.CurTimeSpeed != TimeSpeed.Paused && Settings.LastRealTimeSlowdown + Settings.MinSecondsToNextSlowdown < Time.realtimeSinceStartup)
+						{
+							// execute slowdown
+							Find.TickManager.CurTimeSpeed = TimeSpeed.Normal;
+							// remember last slowdown timestamp
+							Settings.LastRealTimeSlowdown = Time.realtimeSinceStartup;
+						}
+
+						// skip original function - do not lock gamespeed
+						return false;
+					}
+				case Settings.SlowdownDegree.DisableGamespeedSlowdown:
+					{
+						// set forceNormalSpeedUntil (private variable) to 0 just in case
+						Traverse.Create(__instance).Field("forceNormalSpeedUntil").SetValue(0);
+
+						// skip original function - do not slowdown & do not lock gamespeed
+						return false;
+					}
+			}
+			// execute original function - trigger slowdown & lock gamespeed
+			return true;
+		}
+
+#else // OLD CODE
+
 		private static readonly MethodInfo Call_ShouldTriggerForcedNormalSpeed = AccessTools.DeclaredProperty(typeof(HarmonyPatches), nameof(HarmonyPatches.ShouldTriggerForcedNormalSpeed)).GetGetMethod();
 
 		static HarmonyPatches()
@@ -108,5 +156,6 @@ namespace No_Forced_Slowdown
 		{
 			return instructions.ReplaceTimeSlowerCall();
 		}
+#endif
 	}
 }
