@@ -7,7 +7,7 @@ namespace No_Forced_Slowdown
 	{
 		public Main(ModContentPack content) : base(content)
 		{
-			this.GetSettings<Settings>();
+			GetSettings<Settings>();
 		}
 
 		public override void DoSettingsWindowContents(Rect inRect)

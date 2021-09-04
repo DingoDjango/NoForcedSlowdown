@@ -16,13 +16,13 @@ namespace No_Forced_Slowdown
 		static HarmonyPatches()
 		{
 			Harmony harmony = new Harmony("dingo.rimworld.no_forced_slowdown");
-
+			
 			harmony.Patch(
-				AccessTools.Method(typeof(TimeSlower), nameof(TimeSlower.SignalForceNormalSpeed)), 
-				new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_SignalForceNormalSpeed_Prefix)));
+				AccessTools.Method(typeof(TimeSlower), nameof(TimeSlower.SignalForceNormalSpeed)),
+				new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_SignalForceNormalSpeed_Prefix)) { priority = Priority.First });
 			harmony.Patch(
-				AccessTools.Method(typeof(TimeSlower), nameof(TimeSlower.SignalForceNormalSpeedShort)), 
-				new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_SignalForceNormalSpeed_Prefix)));
+				AccessTools.Method(typeof(TimeSlower), nameof(TimeSlower.SignalForceNormalSpeedShort)),
+				new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.Patch_SignalForceNormalSpeed_Prefix)) { priority = Priority.First });
 		}
 
 		public static bool Patch_SignalForceNormalSpeed_Prefix(TimeSlower __instance)
