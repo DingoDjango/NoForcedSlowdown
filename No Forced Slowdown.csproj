@@ -31,7 +31,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>embedded</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Current\Assemblies\</OutputPath>
+    <OutputPath>No Forced Slowdown\Current\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -41,7 +41,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>Current\Assemblies\</OutputPath>
+    <OutputPath>No Forced Slowdown\Current\Assemblies\</OutputPath>
     <DefineConstants>
     </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -53,7 +53,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\Harmony\Current\Assemblies\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\HarmonyRimWorld\Current\Assemblies\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
@@ -80,12 +80,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About\About.xml" />
-    <Content Include="About\Manifest.xml" />
-    <Content Include="About\ModSync.xml" />
+    <Content Include="No Forced Slowdown\About\About.xml" />
+    <Content Include="No Forced Slowdown\About\Manifest.xml" />
+    <Content Include="No Forced Slowdown\About\ModSync.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LoadFolders.xml" />
+    <Content Include="No Forced Slowdown\LoadFolders.xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HarmonyPatches.cs" />
@@ -108,23 +108,11 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>SET MODDIR=C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\$(ProjectName)
-SET ZIPFILE=D:\Downloads\$(ProjectName).zip
+SET ZIPFILE=$(USERPROFILE)\Downloads\$(ProjectName).zip
 
 mkdir "%25MODDIR%25"
 
-xcopy "$(ProjectDir)1.0" "%25MODDIR%25\1.0" /i /e /r /y
-xcopy "$(ProjectDir)1.1" "%25MODDIR%25\1.1" /i /e /r /y
-
-xcopy "$(ProjectDir)About" "%25MODDIR%25\About" /i /e /r /y
-
-xcopy "$(ProjectDir)Current" "%25MODDIR%25\Current" /i /e /r /y
-
-xcopy "$(ProjectDir)Languages" "%25MODDIR%25\Languages" /i /e /r /y
-
-
-xcopy "$(ProjectDir)LoadFolders.xml" "%25MODDIR%25" /r /y
-
-
+xcopy "$(ProjectDir)$(ProjectName)\*" "%25MODDIR%25" /i /e /r /y
 
 7z a -mx9 "%25ZIPFILE%25" "%25MODDIR%25"
 

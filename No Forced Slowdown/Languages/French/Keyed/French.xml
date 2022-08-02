@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<!-- Mod option - determine mod functionality -->
+
+	<NFS.ModFunctions>&lt;b&gt;Fonctionnalités:&lt;/b&gt;</NFS.ModFunctions>
+
+	<NFS.RegularGameplay>Ne rien faire</NFS.RegularGameplay>
+	<NFS.RegularGameplay.Tooltip>Lorsque le ralentissement est déclenché :\n- Forcer la vitesse de jeu à x1\n- Commandes de temps verrouillées</NFS.RegularGameplay.Tooltip>
+
+	<NFS.DisableGamespeedLock>Déverrouiller les commandes de temps</NFS.DisableGamespeedLock>
+	<NFS.DisableGamespeedLock.Tooltip>Lorsque le ralentissement est déclenché :\n- Forcer la vitesse de jeu à x1\n- Commandes de tempsno déverrouillées</NFS.DisableGamespeedLock.Tooltip>
+
+	<NFS.DisableGamespeedSlowdown>Désactiver le mécanisme de ralentissement</NFS.DisableGamespeedSlowdown>
+	<NFS.DisableGamespeedSlowdown.Tooltip>Lorsque le ralentissement est déclenché :\n- Ne pas forcer pas la vitesse du jeu\n- Commandes de temps déverrouillées</NFS.DisableGamespeedSlowdown.Tooltip>
+
+	<!-- Mod option - minimum time between slowdowns -->
+
+	<NFS.MinSecondsToNextSlowdown>&lt;b&gt;Secondes minimales entre les ralentissements:&lt;/b&gt;</NFS.MinSecondsToNextSlowdown>
+	<NFS.MinSecondsToNextSlowdown.Tooltip>Uniquement valable si "Déverrouiller les commandes de temps" est sélectionné.\n\nLa durée minimale (en secondes en temps réel) après un ralentissement, avant qu'un nouveau ralentissement puisse être déclenché.</NFS.MinSecondsToNextSlowdown.Tooltip>
+
+</LanguageData>

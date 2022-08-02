@@ -41,13 +41,9 @@ namespace No_Forced_Slowdown
 				bool active = CurrentModFunction == degree;
 				string tooltip = (name + ".Tooltip").Translate();
 
-				if (modOptions.RadioButton_NewTemp(label, active, default, tooltip))
+				if (modOptions.RadioButton(label, active, default, tooltip))
 				{
 					CurrentModFunction = degree;
-
-#if DEBUG
-					Log.Message($"No Forced Slowdown :: [{CurrentModFunction.ToString()}] has been selected.");
-#endif
 				}
 			}
 
