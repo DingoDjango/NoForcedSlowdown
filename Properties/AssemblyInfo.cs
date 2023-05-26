@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("No Forced Slowdown")]
-[assembly: AssemblyCopyright("Copyright © Dingo 2020")]
+[assembly: AssemblyCopyright("Copyright © Dingo 2018-2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.4.8329.1")]
-[assembly: AssemblyFileVersion("1.4.8329.1")]
+[assembly: AssemblyVersion("1.4.8509.1")]
+[assembly: AssemblyFileVersion("1.4.8509.1")]

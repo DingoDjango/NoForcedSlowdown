@@ -8,11 +8,7 @@ namespace No_Forced_Slowdown
 	public static class HarmonyPatches
 	{
 		static HarmonyPatches()
-		{
-#if DEBUG
-			Harmony.DEBUG = true;
-#endif
-			
+		{			
 			Harmony harmony = new Harmony("dingo.rimworld.no_forced_slowdown");
 
 			// Patch: Verse.TimeSlower.SignalForceNormalSpeed
