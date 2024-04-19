@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Manifest>
 	<identifier>Dingo.NoForcedSlowdown</identifier>
-	<version>1.4.8509.1</version>
+	<version>1.5.8874.1</version>
 	<manifestUri>https://raw.githubusercontent.com/DingoDjango/NoForcedSlowdown/master/No%20Forced%20Slowdown/About/Manifest.xml</manifestUri>
 	<downloadUri>https://github.com/DingoDjango/NoForcedSlowdown/releases/latest</downloadUri>
 </Manifest>
