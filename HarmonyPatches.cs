@@ -1,5 +1,4 @@
-﻿using HarmonyLib;
-using UnityEngine;
+using HarmonyLib;
 using Verse;
 
 namespace No_Forced_Slowdown
@@ -43,10 +42,11 @@ namespace No_Forced_Slowdown
 			if (Settings.CurrentModFunction == Settings.SlowdownDegree.DisableGamespeedLock)
 			{
 				// If enough real time has passed (in seconds, setting-dependent), trigger slowdown
-				if (Find.TickManager.CurTimeSpeed != TimeSpeed.Paused && Settings.LastRealTimeSlowdown + Settings.MinSecondsToNextSlowdown < Time.realtimeSinceStartup)
+				float realTime = RealTime.LastRealTime;
+				if (Find.TickManager.CurTimeSpeed != TimeSpeed.Paused && Settings.LastRealTimeSlowdown + Settings.MinSecondsToNextSlowdown < realTime)
 				{
 					Find.TickManager.CurTimeSpeed = TimeSpeed.Normal;
-					Settings.LastRealTimeSlowdown = Time.realtimeSinceStartup;
+					Settings.LastRealTimeSlowdown = realTime;
 				}
 
 				// Do not run vanilla method
